@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.travelapp.entity.Travel;
 @Service
 public class GoogleMapsApiService {
-    private final String API_KEY = "AIzaSyAHFMgh1GXKYJsB8xyebY7uE-9I_LXNOcU";
+    private final String API_KEY = "Your API KEY";
 
     public double getDistance(String origin, String destination){
         GeoApiContext context = new GeoApiContext.Builder()
