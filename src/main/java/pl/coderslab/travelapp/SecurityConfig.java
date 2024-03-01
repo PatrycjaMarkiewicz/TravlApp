@@ -13,8 +13,7 @@ public class SecurityConfig {
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-//                .requestMatchers("/login").permitAll()
-                .requestMatchers("/","/addVehicle","/addPlace").authenticated()
+                .requestMatchers("/","/addVehicle","/addPlace","/addTravel").authenticated()
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/",true)
                 .and().logout().logoutSuccessUrl("/login");
         return http.build();

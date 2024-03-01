@@ -1,7 +1,10 @@
 package pl.coderslab.travelapp.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotEmpty;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -9,16 +12,21 @@ public class Travel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "cannot be null")
     private String title;
     private String originAddress;
     private String destinationAddress;
     private double distance;
-    private long timeInSeconds;
-    private String plannedDate;
+    private int hours;
+    private int minutes;
+    @FutureOrPresent(message = "wrong date entered")
+    private LocalDate plannedDate;
     private double vehicleSpeed;
+    private double waterInLiters;
 
     public Travel() {
     }
+
 
     public Long getId() {
         return id;
@@ -52,19 +60,27 @@ public class Travel {
         this.distance = distance;
     }
 
-    public long getTimeInSeconds() {
-        return timeInSeconds;
+    public int getHours() {
+        return hours;
     }
 
-    public void setTimeInSeconds(long timeInSeconds) {
-        this.timeInSeconds = timeInSeconds;
+    public void setHours(int hours) {
+        this.hours = hours;
     }
 
-    public String getPlannedDate() {
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
+    public LocalDate getPlannedDate() {
         return plannedDate;
     }
 
-    public void setPlannedDate(String plannedDate) {
+    public void setPlannedDate(LocalDate plannedDate) {
         this.plannedDate = plannedDate;
     }
 
@@ -82,5 +98,13 @@ public class Travel {
 
     public void setDestinationAddress(String destinationAddress) {
         this.destinationAddress = destinationAddress;
+    }
+
+    public double getWaterInLiters() {
+        return waterInLiters;
+    }
+
+    public void setWaterInLiters(double waterInLiters) {
+        this.waterInLiters = waterInLiters;
     }
 }

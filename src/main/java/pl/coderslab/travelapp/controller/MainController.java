@@ -11,11 +11,11 @@ import pl.coderslab.travelapp.service.CurrentUser;
 @Controller
 public class MainController {
     @GetMapping("/")
-    public String showAll(Model model,@AuthenticationPrincipal CurrentUser customUser){
-        User entityUser = customUser.getUser();
-        model.addAttribute("vehicles",entityUser.getVehicles());
-        model.addAttribute("places",entityUser.getPlaces());
-        model.addAttribute("travels",entityUser.getTravels());
+    public String showAll(Model model,@AuthenticationPrincipal CurrentUser currentUser){
+        User user = currentUser.getUser();
+        model.addAttribute("vehicles",user.getVehicles());
+        model.addAttribute("places",user.getPlaces());
+        model.addAttribute("travels",user.getTravels());
         return "all";
     }
 }
